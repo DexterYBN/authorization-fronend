@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto&display=swap');
+body {
+  background-color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+.users {
+  max-width: 100%;
+  text-align: center;
+}
+
+.users h1 {
+  color: white;
+}
+
+.names {
+  color: white;
+  font-size: 25px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.signIn {
+  max-width: 100%;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.signUp {
+  max-width: 100%;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 300px;
+  margin: 10px 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  height: 40px;
+  outline: none;
+  font-size: large;
+  color: white;
+}
+
+button {
+  width: 200px;
+  margin-top: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  color: blue;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 7px;
+}
+
+h3 {
+  color: blue;
+}
+
+.link {
+  color: blue;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.todoApp {
+  max-width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.todos {
+  display: flex;
+  justify-content: space-between;
+  max-width: 870px;
+  text-align: center;
+  color: white;
+}
+
+.dltBtn {
+  color: red;
+  width: 100px;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 330px;
+}
+
+.addBtn {
+  color: white;
+  width: auto;
+  border: none;
+  margin-left: 20px;
+}
+
+.todoInput {
+  width: 50%;
+}
+
+.title {
+  color: white;
+  text-align: center;
+}
