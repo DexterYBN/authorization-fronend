@@ -31,27 +31,31 @@ const SignUp = () => {
   }
 
   return (
-      <div className={style.signUp}>
-        <form onSubmit={handleSignUp}>
-          <input
-            type="text"
-            value={login}
-            placeholder="name"
-            onChange={handleSetName}
-          />
-          <br />
-          <input
-            type="password"
-            value={password}
-            placeholder="password"
-            onChange={handleSetPass}
-          />
-          <br />
-          <button type="submit">Зарегистрироваться</button>
-          <h3>Уже есть аккаунт?<Link className={style.link} to="/login">Войти</Link></h3>
-        </form>
-        
-      </div>
+    <div className={style.signUp}>
+      <form onSubmit={handleSignUp}>
+        <input
+          type="text"
+          value={login}
+          placeholder="name"
+          onChange={handleSetName}
+        />
+        <br />
+        <input
+          type="password"
+          value={password}
+          placeholder="password"
+          onChange={handleSetPass}
+        />
+        <br />
+        <button type="submit">Зарегистрироваться</button>
+        <h3>
+          Уже есть аккаунт?
+          <Link className={style.link} to="/login">
+            Войти
+          </Link>
+        </h3>
+      </form>
+    </div>
   );
 };
 

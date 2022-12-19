@@ -16,7 +16,6 @@ export const fetchUsers = createAsyncThunk(
       });
 
       const users = await res.json();
-
       if (users.error) {
         return thunkAPI.rejectWithValue(users.error);
       }

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kenia&family=Roboto&display=swap");
 body {
   background-color: #333;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .users {
@@ -54,14 +54,14 @@ button {
   margin-top: 30px;
   background-color: transparent;
   cursor: pointer;
-  color: blue;
+  color: rgba(0, 132, 255, 0.582);
   height: 30px;
-  border: 1px solid blue;
+  border: 1px solid rgba(0, 132, 255, 0.582);
   border-radius: 7px;
 }
 
 h3 {
-  color: blue;
+  color: rgba(0, 132, 255, 0.582);
 }
 
 .link {
@@ -112,7 +112,33 @@ h3 {
   width: 50%;
 }
 
-.title {
+.header {
+  display: flex;
   color: white;
+  justify-content: space-between;
+}
+
+.header h1 {
+  width: 25%;
   text-align: center;
+}
+
+.header button {
+  width: 25%;
+  color: brown;
+  font-size: 18px;
+  border: none;
+  margin-left: 20px;
+  height: 15px;
+}
+
+.link {
+  color: rgba(0, 132, 255, 0.582);
+}
+
+.nickname {
+  font-family: cursive;
+  text-align: end;
+  color: rgb(38, 255, 0);
+  font-size: 20px;
 }

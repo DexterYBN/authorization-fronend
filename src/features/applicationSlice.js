@@ -5,7 +5,7 @@ const initialState = {
   signingUp: false,
   signingIn: false,
   token: localStorage.getItem("token"),
-  id: localStorage.getItem("id"),
+  login: localStorage.getItem("login"),
 };
 
 export const authSignUp = createAsyncThunk(
@@ -45,13 +45,12 @@ export const authSignIn = createAsyncThunk(
         body: JSON.stringify({ login, password }),
       });
 
-      const { token, id } = await res.json();
+      const token = await res.json();
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
-      // console.log("action");
-      localStorage.setItem("token", token);
-      localStorage.setItem("id", id);
+      localStorage.setItem("token", token.token);
+      localStorage.setItem("login", token.login);
 
       return token;
     } catch (error) {

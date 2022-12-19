@@ -48,9 +48,13 @@ const SignIn = () => {
         />
         <br />
         <button type="submit">Войти</button>
-        <h3>Нет аккаунта? <Link className={style.link} to="/auth">Зарегистрироваться</Link></h3>
+        <h3>
+          Нет аккаунта?
+          <Link className={style.link} to="/auth">
+            Зарегистрироваться
+          </Link>
+        </h3>
       </form>
-      
     </div>
   );
 };

@@ -7,15 +7,14 @@ import { useSelector } from "react-redux";
 
 function App() {
   const token = useSelector((state) => state.application.token);
-  // console.log(token);
   if (!token) {
     return (
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/auth" element={<SignUp />} />
         <Route path="/login" element={<SignIn />} />
-        <Route path="/todos" element={<SignUp />} />
-        <Route path="/users" element={<SignUp />} />
+        <Route path="/todos" element={<SignIn />} />
+        <Route path="/users" element={<SignIn />} />
       </Routes>
     );
   }
