@@ -6,7 +6,9 @@ import Todos from "./components/Todos";
 import { useSelector } from "react-redux";
 
 function App() {
+  // Получаем токен
   const token = useSelector((state) => state.application.token);
+  // Если нет авторизации
   if (!token) {
     return (
       <Routes>
@@ -18,6 +20,7 @@ function App() {
       </Routes>
     );
   }
+  // Если есть авторизация
   return (
     <Routes>
       <Route path="/login" element={<Navigate to="/" />} />

@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// Начальный state
 const initialState = {
   users: [],
   error: null,
   loading: false,
 };
 
+// Санка GET
 export const fetchUsers = createAsyncThunk(
   "get/users/fetch",
   async (_, thunkAPI) => {
@@ -27,6 +29,7 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
+// CreateSlice
 const usersSlice = createSlice({
   name: "users",
   initialState,

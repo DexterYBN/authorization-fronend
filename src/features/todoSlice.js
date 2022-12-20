@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// Начальный state
 const initialState = {
   todos: [],
   error: null,
   loading: null,
 };
 
+// Санка GET
 export const fetchTodos = createAsyncThunk(
   "get/todos/fetch",
   async (_, thunkAPI) => {
@@ -28,6 +30,7 @@ export const fetchTodos = createAsyncThunk(
   }
 );
 
+// Санка POST
 export const addTodo = createAsyncThunk(
   "post/addtodo/fetch",
   async (data, thunkAPI) => {
@@ -53,6 +56,7 @@ export const addTodo = createAsyncThunk(
   }
 );
 
+// Санка DELETE
 export const removeTodo = createAsyncThunk(
   "delete/deleteTodo/fetch",
   async (data, thunkAPI) => {
@@ -77,6 +81,7 @@ export const removeTodo = createAsyncThunk(
   }
 );
 
+// CreateSlice
 const todosSlice = createSlice({
   name: "todos",
   initialState,

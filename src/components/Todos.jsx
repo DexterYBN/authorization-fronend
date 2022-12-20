@@ -11,27 +11,34 @@ const Todos = () => {
   const token = useSelector((state) => state.application.token);
   const login = useSelector((state) => state.application.login);
   const loading = useSelector((state) => state.todos.loading);
+  const error = useSelector((state) => state.error);
 
+  // На кнопку. Для удаление токена из localStorage. Кнопка выхода
   const clearToken = () => {
     window.location.reload();
     localStorage.clear(token);
   };
 
+  // Состояние
   const [text, setText] = useState("");
 
+  // На кнопку. Для добавления текста
   const handleAddTodo = () => {
     dispatch(addTodo({ text }));
     setText("");
   };
 
+  // На input
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
+  // Для остановки бесконечных запросов и чтобы сервер не банил
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
+  // Прелоадер
   if (loading) {
     return (
       <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>
@@ -39,6 +46,12 @@ const Todos = () => {
       </div>
     );
   }
+
+  // При ошибке
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+
   return (
     <>
       <div className={style.header}>

@@ -3,13 +3,16 @@ import { removeTodo } from "../features/todoSlice";
 import style from "./Styles.module.css";
 
 const Todo = ({ id, text, user, loading }) => {
+  // Диспетчер
   const dispatch = useDispatch();
 
+  // Кнопка удаления текста
   const handleRemove = () => {
     window.location.reload();
     dispatch(removeTodo({ id }));
   };
 
+  // Прелоадер
   if (loading) {
     return <div style={{ color: "red" }}>Удаляется...</div>;
   }

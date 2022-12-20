@@ -6,31 +6,38 @@ import style from "./Styles.module.css";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-
-  const dispatch = useDispatch();
-
   const error = useSelector((state) => state.application.error);
   const signingIn = useSelector((state) => state.application.signingIn);
 
+  // Состояния
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Диспетчер
+  const dispatch = useDispatch();
+
+  // На input. Для логина
   const handleSetName = (e) => {
     setLogin(e.target.value);
   };
 
+  // На input. Для пароля
   const handleSetPass = (e) => {
     setPassword(e.target.value);
   };
 
+  // Форма отправки данных
   const handleSignIn = (e) => {
     e.preventDefault();
     dispatch(authSignIn({ login, password }));
   };
 
+  // При ошибке
   if (error) {
     return <div>{error}</div>;
   }
 
+  // Прелоадер
   if (signingIn) {
     return (
       <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>

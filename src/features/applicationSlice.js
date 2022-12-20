@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// Начальный state
 const initialState = {
   error: null,
   signingUp: false,
@@ -8,6 +9,7 @@ const initialState = {
   login: localStorage.getItem("login"),
 };
 
+// Санка POST
 export const authSignUp = createAsyncThunk(
   "auth/signUp",
   async ({ login, password }, thunkAPI) => {
@@ -33,6 +35,7 @@ export const authSignUp = createAsyncThunk(
   }
 );
 
+// Санка POST
 export const authSignIn = createAsyncThunk(
   "login/signIn",
   async ({ login, password }, thunkAPI) => {
@@ -59,6 +62,7 @@ export const authSignIn = createAsyncThunk(
   }
 );
 
+// createSlice
 const applicationSlice = createSlice({
   name: "application",
   initialState,
@@ -66,7 +70,7 @@ const applicationSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-    // POST
+      // POST
 
       .addCase(authSignUp.rejected, (state, action) => {
         state.signingUp = false;

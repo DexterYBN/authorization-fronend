@@ -6,31 +6,36 @@ import style from "./Styles.module.css";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-
-  const dispatch = useDispatch();
-
   const error = useSelector((state) => state.application.error);
   const signingUp = useSelector((state) => state.application.signingUp);
 
+  // Состояния
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Дисппетчер
+  const dispatch = useDispatch();
+
+  // На input. Для логина
   const handleSetName = (e) => {
     setLogin(e.target.value);
   };
-
+  // На input. Для пароля
   const handleSetPass = (e) => {
     setPassword(e.target.value);
   };
-
+  // Форма отправки данных
   const handleSignUp = (e) => {
     e.preventDefault();
     dispatch(authSignUp({ login, password }));
   };
 
+  // При ошибке
   if (error) {
     return <div>{error}</div>;
   }
 
+  // Прелоадер
   if (signingUp) {
     return (
       <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>

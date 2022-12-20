@@ -7,21 +7,25 @@ import { Link } from "react-router-dom";
 import style from "./Styles.module.css";
 
 const Users = () => {
+  // Диспетчер
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.users.users);
   const token = useSelector((state) => state.application.token);
   const loading = useSelector((state) => state.users.loading);
 
+  // На кнопку. Для удаление токена из localStorage. Кнопка выхода
   const clearToken = () => {
     window.location.reload();
     localStorage.clear(token);
   };
 
+  // Для остановки бесконечных запросов и чтобы сервер не банил
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+  // Прелоадер
   if (loading) {
     return (
       <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>
