@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../features/usersSlice";
 import { Link } from "react-router-dom";
-
 import style from "./Styles.module.css";
 
 const Users = () => {

@@ -63,7 +63,7 @@ const SignIn = () => {
           onChange={handleSetPass}
         />
         <br />
-        <button type="submit">Войти</button>
+        <button disabled={!login || !password} type="submit">Войти</button>
         <h3>
           Нет аккаунта?
           <Link className={style.link} to="/auth">

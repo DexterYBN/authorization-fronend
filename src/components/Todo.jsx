@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { removeTodo } from "../features/todoSlice";
 import style from "./Styles.module.css";
+import deleteIcon from "./icons/icons8-24.png";
 
 const Todo = ({ id, text, user, loading }) => {
   // Диспетчер
@@ -19,11 +20,11 @@ const Todo = ({ id, text, user, loading }) => {
 
   return (
     <div className={style.todos}>
-      <div>{`${user.login}:`}</div>
+      <div>{`${user.login} :`}</div>
       <div>{text}</div>
       <div>
         <button onClick={handleRemove} className={style.dltBtn}>
-          Удалить
+          <img src={deleteIcon} alt="Удалить" />
         </button>
       </div>
     </div>

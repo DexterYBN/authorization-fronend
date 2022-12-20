@@ -4,9 +4,12 @@ import { addTodo, fetchTodos } from "../features/todoSlice";
 import { Link } from "react-router-dom";
 import Todo from "./Todo";
 import style from "./Styles.module.css";
+import sendMessageIcon from "./icons/icons8-telegram-is-a-cloud-based-instant-messaging-and-voice-over-ip-service-24.png";
 
 const Todos = () => {
+  // Диспетчер
   const dispatch = useDispatch();
+
   const todos = useSelector((state) => state.todos.todos);
   const token = useSelector((state) => state.application.token);
   const login = useSelector((state) => state.application.login);
@@ -76,8 +79,13 @@ const Todos = () => {
           value={text}
           className={style.todoInput}
         />
-        <button type="submit" onClick={handleAddTodo} className={style.addBtn}>
-          Добавить
+        <button
+          disabled={!text}
+          type="submit"
+          onClick={handleAddTodo}
+          className={style.addBtn}
+        >
+          <img src={sendMessageIcon} alt="Отправить" />
         </button>
       </div>
       <div className={style.todo}>

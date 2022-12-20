@@ -61,7 +61,9 @@ const SignUp = () => {
           onChange={handleSetPass}
         />
         <br />
-        <button type="submit">Зарегистрироваться</button>
+        <button disabled={!login || !password} type="submit">
+          Зарегистрироваться
+        </button>
         <h3>
           Уже есть аккаунт?
           <Link className={style.link} to="/login">
