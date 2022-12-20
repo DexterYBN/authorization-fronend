@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   todos: [],
   error: null,
+  loading: null,
 };
 
 export const fetchTodos = createAsyncThunk(
@@ -82,38 +83,61 @@ const todosSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
+      // GET
+
       .addCase(fetchTodos.rejected, (state, action) => {
         state.error = action.payload;
         state.userId = action.payload;
+        state.loading = false;
       })
       .addCase(fetchTodos.pending, (state) => {
         state.error = null;
+        state.loading = true;
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.error = null;
         state.todos = action.payload;
+        state.loading = false;
       })
+
+      // POST
+
       .addCase(addTodo.rejected, (state, action) => {
         state.error = action.payload;
+        state.loading = false;
       })
       .addCase(addTodo.pending, (state) => {
         state.error = null;
+        state.loading = true;
       })
       .addCase(addTodo.fulfilled, (state, action) => {
         state.error = null;
         state.todos.push(action.payload);
+        state.loading = false;
       })
+
+      // DELETE
+
       .addCase(removeTodo.rejected, (state, action) => {
         state.error = action.payload;
+        state.loading = false;
       })
-      .addCase(removeTodo.pending, (state) => {
+      .addCase(removeTodo.pending, (state, action) => {
         state.error = null;
+        state.todos = state.todos.map((todo) => {
+          if (todo._id === action.meta.arg.id) {
+            todo.loading = true;
+          }
+          return todo;
+        });
       })
       .addCase(removeTodo.fulfilled, (state, action) => {
         state.error = null;
         state.todos = state.todos.filter((todo) => {
           return todo._id !== action.payload._id;
         });
+        state.loading = false;
       });
   },
 });

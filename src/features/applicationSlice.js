@@ -65,6 +65,9 @@ const applicationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
+    // POST
+
       .addCase(authSignUp.rejected, (state, action) => {
         state.signingUp = false;
         state.error = action.payload;
@@ -77,6 +80,9 @@ const applicationSlice = createSlice({
         state.signingUp = false;
         state.error = null;
       })
+
+      // POST
+
       .addCase(authSignIn.rejected, (state, action) => {
         state.signingIn = false;
         state.error = action.payload;

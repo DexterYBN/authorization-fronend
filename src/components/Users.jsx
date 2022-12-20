@@ -11,6 +11,7 @@ const Users = () => {
 
   const users = useSelector((state) => state.users.users);
   const token = useSelector((state) => state.application.token);
+  const loading = useSelector((state) => state.users.loading);
 
   const clearToken = () => {
     window.location.reload();
@@ -20,12 +21,21 @@ const Users = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  if (loading) {
+    return (
+      <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>
+        Loading users. Please wait...
+      </div>
+    );
+  }
+
   return (
     <div className={style.users}>
       <div className={style.header}>
         <h1>
           <Link className={style.link} to="/todos">
-            TODO
+            CHAT
           </Link>
         </h1>
         <h1 className={style.title}>Список пользователей</h1>

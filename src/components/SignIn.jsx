@@ -12,6 +12,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const error = useSelector((state) => state.application.error);
+  const signingIn = useSelector((state) => state.application.signingIn);
 
   const handleSetName = (e) => {
     setLogin(e.target.value);
@@ -28,6 +29,14 @@ const SignIn = () => {
 
   if (error) {
     return <div>{error}</div>;
+  }
+
+  if (signingIn) {
+    return (
+      <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>
+        Login in progress. Wait...
+      </div>
+    );
   }
 
   return (

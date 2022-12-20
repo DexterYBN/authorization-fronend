@@ -10,6 +10,7 @@ const Todos = () => {
   const todos = useSelector((state) => state.todos.todos);
   const token = useSelector((state) => state.application.token);
   const login = useSelector((state) => state.application.login);
+  const loading = useSelector((state) => state.todos.loading);
 
   const clearToken = () => {
     window.location.reload();
@@ -31,6 +32,13 @@ const Todos = () => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
+  if (loading) {
+    return (
+      <div style={{ color: "brown", fontSize: "50px", textAlign: "center" }}>
+        Please wait...
+      </div>
+    );
+  }
   return (
     <>
       <div className={style.header}>
@@ -60,18 +68,17 @@ const Todos = () => {
         </button>
       </div>
       <div className={style.todo}>
-        {todos
-          .map((todo) => {
-            return (
-              <Todo
-                key={todo._id}
-                id={todo._id}
-                text={todo.text}
-                user={todo.user}
-              />
-            );
-          })
-          .reverse()}
+        {todos.map((todo) => {
+          return (
+            <Todo
+              key={todo._id}
+              id={todo._id}
+              text={todo.text}
+              user={todo.user}
+              loading={todo.loading}
+            />
+          );
+        })}
       </div>
     </>
   );
