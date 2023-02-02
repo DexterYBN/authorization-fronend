@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { serverUrl } from '../serverUrl.js';
+import { serverUrl } from '../serverUrl';
 
 // Начальный state
 const initialState = {
@@ -36,7 +36,7 @@ export const addTodo = createAsyncThunk(
   "post/addtodo/fetch",
   async (data, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:3030/todos", {
+      const res = await fetch(`${serverUrl}/todos`, {
         method: "POST",
         body: JSON.stringify({ text: data.text }),
         headers: {
@@ -62,7 +62,7 @@ export const removeTodo = createAsyncThunk(
   "delete/deleteTodo/fetch",
   async (data, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3030/todos/${data.id}`, {
+      const res = await fetch(`${serverUrl}/todos/${data.id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
