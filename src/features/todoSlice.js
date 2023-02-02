@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { serverUrl } from '../serverUrl.js';
 
 // Начальный state
 const initialState = {
@@ -12,7 +13,7 @@ export const fetchTodos = createAsyncThunk(
   "get/todos/fetch",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:3030/todos", {
+      const res = await fetch(`${serverUrl}/todos`, {
         headers: {
           Authorization: `Bearer ${thunkAPI.getState().application.token}`,
         },

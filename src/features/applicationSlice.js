@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { serverUrl } from '../serverUrl.js';
 
 // Начальный state
 const initialState = {
@@ -14,7 +15,7 @@ export const authSignUp = createAsyncThunk(
   "auth/signUp",
   async ({ login, password }, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:3030/auth", {
+      const res = await fetch(`${serverUrl}/auth`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
