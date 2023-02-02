@@ -5,5 +5,5 @@ export let serverUrl;
 if(NODE_ENV === 'development') {
   serverUrl = 'http://localhost:3030' // адрес сервера на локалке
 } else {
-  serverUrl = 'https://auth-backend-cy3t.onrender.com'; // адрес сервера после выгрузки
+  serverUrl = 'https://app.onrender.com'; // адрес сервера после выгрузки
 }
