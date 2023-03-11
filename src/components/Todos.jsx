@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, fetchTodos } from "../features/todoSlice";
 import { Link } from "react-router-dom";
@@ -18,12 +18,12 @@ const Todos = () => {
 
   // На кнопку. Для удаление токена из localStorage. Кнопка выхода
   const clearToken = () => {
-    window.location.reload();
     localStorage.clear(token);
+    window.location.reload();
   };
 
   // Состояние
-  const [text, setText] = useState("");
+  const [text, setText] = React.useState("");
 
   // На кнопку. Для добавления текста
   const handleAddTodo = () => {
@@ -37,7 +37,7 @@ const Todos = () => {
   };
 
   // Для остановки бесконечных запросов и чтобы сервер не банил
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
 

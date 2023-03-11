@@ -1,17 +1,16 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authSignUp } from "../features/applicationSlice";
-import style from "./Styles.module.css";
 import { Link } from "react-router-dom";
+import style from "./Styles.module.css";
 
 const SignUp = () => {
   const error = useSelector((state) => state.application.error);
   const signingUp = useSelector((state) => state.application.signingUp);
 
   // Состояния
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   // Дисппетчер
   const dispatch = useDispatch();
@@ -28,6 +27,9 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     dispatch(authSignUp({ login, password }));
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 1000)
   };
 
   // При ошибке

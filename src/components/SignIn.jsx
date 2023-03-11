@@ -1,17 +1,16 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authSignIn } from "../features/applicationSlice";
-import style from "./Styles.module.css";
 import { Link } from "react-router-dom";
+import style from "./Styles.module.css";
 
 const SignIn = () => {
   const error = useSelector((state) => state.application.error);
   const signingIn = useSelector((state) => state.application.signingIn);
 
   // Состояния
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   // Диспетчер
   const dispatch = useDispatch();
@@ -30,6 +29,9 @@ const SignIn = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
     dispatch(authSignIn({ login, password }));
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000)
   };
 
   // При ошибке
@@ -63,7 +65,9 @@ const SignIn = () => {
           onChange={handleSetPass}
         />
         <br />
-        <button disabled={!login || !password} type="submit">Войти</button>
+        <button disabled={!login || !password} type="submit">
+          Войти
+        </button>
         <h3>
           Нет аккаунта?
           <Link className={style.link} to="/auth">
